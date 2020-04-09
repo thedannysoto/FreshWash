@@ -1,0 +1,2 @@
+class Wash < ApplicationRecord
+end
