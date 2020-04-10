@@ -1,4 +1,8 @@
-class SessionController < ApplicationController 
+class SessionsController < ApplicationController 
+    def index
+        render 'welcome/index'
+    end
+    
     def create
         @user = User.find_or_create_by(uid: auth['uid']) do |u|
           u.name = auth['info']['name']
