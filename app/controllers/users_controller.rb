@@ -6,6 +6,18 @@ class UsersController < ApplicationController
     def create 
         User.create(user_params)
     end
+    
+    def signin
+        @user = User.new
+    end
+
+    def login
+        
+    end
+
+    def show 
+
+    end
 
 
     private

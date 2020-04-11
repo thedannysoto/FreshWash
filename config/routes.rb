@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   resources :cars
+
   resources :packages
+
   resources :users
+  get '/signin', to: 'users#signin'
+  post '/signin', to: 'users#login'
 
   #Set Root
   root 'sessions#index'
