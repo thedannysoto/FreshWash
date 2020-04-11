@@ -20,6 +20,11 @@
 
 @tailwind utilities;
 
+@font-face {
+    font-family: 'orbitron';
+    src: url('/assets/orbitron.ttf') format("truetype");
+ }
+
 .main-logo {
     width: 800px;
     display: block;
