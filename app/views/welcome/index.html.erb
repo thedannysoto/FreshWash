@@ -2,6 +2,16 @@
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v6.0&appId=643880789678183&autoLogAppEvents=1"></script>
 
-<div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-layout="rounded" data-auto-logout-link="false" data-use-continue-as="false"></div>
+<!-- Tailwind Stylesheet -->
+<link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
 
-<%= link_to('Log in with Facebook!', '/auth/facebook') %>
+
+<div class="mx-auto">
+  <img class="main-logo" src="/images/logo.png" alt="Fresh Wash Logo" /> 
+  <div id="buttons" class="flex justify-between items-center">
+    <button type="submit" id="sign-in" class="w-64 px-4 border border-transparent text-base font-extrabold rounded-full text-white focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo">
+          Sign in
+    </button> 
+    <div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-layout="rounded" data-auto-logout-link="false" data-use-continue-as="false"></div>
+  </div>
+</div>
