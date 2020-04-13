@@ -1,16 +1,16 @@
-<!-- Script for Facebook Login Button -->
-<div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v6.0&appId=643880789678183&autoLogAppEvents=1"></script>
 
-<!-- MAIN -->
 <div class="mx-auto">
-  <img class="main-logo" src="/images/logo.png" alt="Fresh Wash Logo" /> 
+  <img class="main-logo mt-5" src="/images/logo.png" alt="Fresh Wash Logo" />
   <div id="buttons" class="flex justify-between items-center pt-20">
     <a href="/signin">
       <button type="submit" id="sign-in" class="w-64 px-4 border border-transparent text-base font-extrabold rounded-full text-white focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo">
         Sign in
       </button> 
     </a>
-    <div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-layout="rounded" data-auto-logout-link="false" data-use-continue-as="false"></div>
+    <a href="/auth/facebook">
+      <button type="submit" id="sign-in" class="w-64 px-4 border border-transparent text-base font-extrabold rounded-full text-white focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo">
+        Continue with Facebook
+      </button> 
+    </a>
   </div>
 </div>

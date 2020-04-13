@@ -1,19 +1,27 @@
 class SessionsController < ApplicationController 
+    layout 'home'
+    
     def index
         render 'welcome/index'
     end
     
     def create
-        @user = User.find_or_create_by(uid: auth['uid']) do |u|
-          u.name = auth['info']['name']
-          u.email = auth['info']['email']
-          u.image = auth['info']['image']
-        end
-     
+      @user = User.find_by(uid: auth['uid'])
+      if @user
         session[:user_id] = @user.id
-     
-        render 'welcome/index'
+        redirect_to user_path(@user)
+      else
+        binding.pry
+        @user = User.new
+        @user.uid = auth['uid']
+        @user.name = auth['info']['name']
+        @user.email = auth['info']['email']
+        @user.password = SecureRandom.hex(13)
+        @user.save
+        session[:user_id] = @user.id
+        redirect_to user_path(@user)
       end
+    end
      
       private
      

@@ -4,7 +4,8 @@ class UsersController < ApplicationController
     end
 
     def create 
-        User.create(user_params)
+        @user = User.create(user_params)
+        redirect_to "/signin"
     end
     
     def signin
@@ -12,11 +13,14 @@ class UsersController < ApplicationController
     end
 
     def login
-        
+        @user = User.find_by(email: params[:user][:email])
+        return head(:forbidden) unless @user.authenticate(params[:user][:password])
+        session[:user_id] = @user.id
+        redirect_to user_path(@user)
     end
 
     def show 
-
+        @user = User.find(params[:id])
     end
 
 
