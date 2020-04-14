@@ -8,103 +8,131 @@
 </header>
 
 <main>
-  <div class="max-w-7xl mx-auto h-screen py-6 sm:px-6 lg:px-8 bg-gray-200">
-
-        <div class="max-w-7xl mx-auto h-screen py-6 sm:px-6 lg:px-8 bg-gray-200">
-            <div class="flex-none text-2xl text-center text-gray-800 font-bold">
-                <h2 class="mb-8">Car Wash Packages</h2>
-            </div>
+<div class="max-w-7xl mx-auto h-auto py-6 sm:px-6 lg:px-8 bg-gray-200">
+        <div class="flex-none text-2xl text-center text-gray-800 font-bold">
+            <h2 class="mb-8">Car Wash Packages</h2>
+        </div>
 
     <!-- Car Wash Package Display -->
-    <div class="flex mt-8 justify-center">
-        <div class="border-l border-t border-b border-gray-400 bg-white">
-            <h2 class ="rounded-full border font-bold text-5xl mt-8 ml-4 bg-red-500 px-1 py-2">
-                $18
-            </h2>
-        </div>
 
-        <div class="border-r border-b border-t border-gray-400  bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
-            <div class="mb-8 text-center">
-                <div class="text-gray-900 font-bold text-xl mb-2">
-                    <p>Fresh Express</p>
+        <div class="flex mt-8 justify-center">
+            <div class="border-l border-t border-b border-gray-400 bg-white">
+                <h2 class ="rounded-full border font-bold text-5xl mt-8 ml-4 bg-red-500 px-2 py-3">
+                    $<%= @packages[3].price %>
+                </h2>
+            </div>
+
+            <div class="border-r border-b border-t border-gray-400  bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+                <div class="mb-8 text-center">
+                    <div class="text-gray-900 font-bold text-2xl mb-2">
+                        <p><%= @packages[3].name %></p>
+                        <div class = "text-center bg-red-500 ml-4">
+                            <p class = "font-bold text-white text-xl">Best Value</p>
+                        </div>
+                    </div>
+                    <ul>
+                        <% @packages[3].features.split(",").each do |feature| %>
+                            <li><%= feature %></li>
+                        <% end %>
+                    </ul>
+                </div> 
+                
+                <div class="flex">
+                    <%= form_for @package, url: car_packages_path(@car) do |f| %>
+                    <%= f.hidden_field :package_id, :value => 4 %>
+                    <%= f.submit "Wash Car!", class: "group relative w-48 flex justify-center ml-1 py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-500 hover:bg-green-700 focus:outline-none focus:border-blue-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out" %>
+                    <% end %>
+                 <!--   <button class="group relative w-48 flex justify-center ml-1 py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-500 hover:bg-green-700 focus:outline-none focus:border-blue-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
+                        Wash Car!
+                    </button> -->
                 </div>
-                    <p> Basic Exterior Wash </p>
-            </div> 
-            <div class="flex">
-                <button class="group relative w-48 flex justify-center ml-1 py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-500 hover:bg-green-700 focus:outline-none focus:border-blue-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
-                    Wash Car!
-                </button>
             </div>
         </div>
-    </div>
 
 
-    <div class="flex mt-8 justify-center">
-        <div class="border-l border-t border-b border-gray-400 bg-white">
-            <h2 class ="rounded-full border font-bold text-5xl mt-8 ml-4 bg-yellow-400 px-1 py-2">
-                $14
-            </h2>
-        </div>
+        <div class="flex mt-8 justify-center">
+            <div class="border-l border-t border-b border-gray-400 bg-white">
+                <h2 class ="rounded-full border font-bold text-5xl mt-8 ml-4 bg-yellow-400 px-1 py-2">
+                    $<%= @packages[2].price %>
+                </h2>
+            </div>
 
-        <div class="border-r border-b border-t border-gray-400  bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
-            <div class="mb-8 text-center">
-                <div class="text-gray-900 font-bold text-xl mb-2">
-                    <p>Fresh Express</p>
+            <div class="border-r border-b border-t border-gray-400  bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+                <div class="mb-8 text-center">
+                    <div class="text-gray-900 font-bold text-2xl mb-2">
+                        <p><%= @packages[2].name %></p>
+                    </div>
+                    <ul>
+                        <% @packages[2].features.split(",").each do |feature| %>
+                            <li><%= feature %></li>
+                        <% end %>
+                    </ul>
+                </div> 
+                <div class="flex">
+                    <button class="group relative w-48 flex justify-center ml-1 py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-500 hover:bg-green-700 focus:outline-none focus:border-blue-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
+                        Wash Car!
+                    </button>
                 </div>
-                    <p> Basic Exterior Wash </p>
-            </div> 
-            <div class="flex">
-                <button class="group relative w-48 flex justify-center ml-1 py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-500 hover:bg-green-700 focus:outline-none focus:border-blue-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
-                    Wash Car!
-                </button>
             </div>
         </div>
-    </div>
 
 
-    <div class="flex mt-8 justify-center">
-        <div class="border-l border-t border-b border-gray-400 bg-white">
-            <h2 class ="rounded-full border font-bold text-5xl mt-8 ml-4 bg-orange-400 px-1 py-2">
-                $10
-            </h2>
-        </div>
+        <div class="flex mt-8 justify-center">
+            <div class="border-l border-t border-b border-gray-400 bg-white">
+                <h2 class ="rounded-full border font-bold text-5xl mt-8 ml-4 bg-orange-400 px-1 py-2">
+                    $<%= @packages[1].price %>
+                </h2>
+            </div>
 
-        <div class="border-r border-b border-t border-gray-400  bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
-            <div class="mb-8 text-center">
-                <div class="text-gray-900 font-bold text-xl mb-2">
-                    <p>Fresh Express</p>
+            <div class="border-r border-b border-t border-gray-400  bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+                <div class="mb-8 text-center">
+                    <div class="text-gray-900 font-bold text-2xl mb-2">
+                        <p><%= @packages[1].name %></p>
+                        <div class = "text-center bg-orange-400 ml-4">
+                            <p class = "font-bold text-white text-xl">Most Popular</p>
+                        </div>
+                    </div>
+                    <ul>
+                        <% @packages[1].features.split(",").each do |feature| %>
+                            <li><%= feature %></li>
+                        <% end %>
+                    </ul>
+                </div> 
+                <div class="flex">
+                    <button class="group relative w-48 flex justify-center ml-1 py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-500 hover:bg-green-700 focus:outline-none focus:border-blue-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
+                        Wash Car!
+                    </button>
                 </div>
-                    <p> Basic Exterior Wash </p>
-            </div> 
-            <div class="flex">
-                <button class="group relative w-48 flex justify-center ml-1 py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-500 hover:bg-green-700 focus:outline-none focus:border-blue-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
-                    Wash Car!
-                </button>
             </div>
         </div>
-    </div>
 
 
-    <div class="flex mt-8 justify-center">
-        <div class="border-l border-t border-b border-gray-400 bg-white">
-            <h2 class ="rounded-full border font-bold text-5xl mt-8 ml-4 bg-blue-400 px-4 py-2">
-                $8
-            </h2>
-        </div>
+        <div class="flex mt-8 justify-center mb-10">
+            <div class="border-l border-t border-b border-gray-400 bg-white">
+                <h2 class ="rounded-full border font-bold text-5xl mt-8 ml-4 bg-blue-400 px-4 py-2">
+                    $<%= @packages[0].price %>
+                </h2>
+            </div>
 
-        <div class="border-r border-b border-t border-gray-400  bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
-            <div class="mb-8 text-center">
-                <div class="text-gray-900 font-bold text-xl mb-2">
-                    <p>Fresh Express</p>
+            <div class="border-r border-b border-t border-gray-400  bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+                <div class="mb-8 text-center">
+                    <div class="text-gray-900 font-bold text-2xl mb-2">
+                        <p><%= @packages[0].name %></p>
+                    </div>
+                    <ul>
+                        <% @packages[0].features.split(",").each do |feature| %>
+                            <li><%= feature %></li>
+                        <% end %>
+                    </ul>
+                </div> 
+                <div class="flex">
+                    <button class="group relative w-48 flex justify-center ml-1 py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-500 hover:bg-green-700 focus:outline-none focus:border-blue-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
+                        Wash Car!
+                    </button>
                 </div>
-                    <p> Basic Exterior Wash </p>
-            </div> 
-            <div class="flex">
-                <button class="group relative w-48 flex justify-center ml-1 py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-500 hover:bg-green-700 focus:outline-none focus:border-blue-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
-                    Wash Car!
-                </button>
             </div>
         </div>
-    </div>
                
+    
 </div>
+</main>

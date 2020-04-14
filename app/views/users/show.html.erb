@@ -64,7 +64,7 @@
                                 <% if car.washes.empty? %>
                                     <p class="text-blue-600 font-semibold text-base">Get your first wash today!</p>
                                 <% else %>
-                                    <p class="text-gray-700 text-base">Last washed on</p>
+                                    <p class="text-gray-700 text-base">Last washed on <%= car.washes.last.updated_at.strftime("%B %e, %Y") %></p>
                                 <% end %>
                             </div> 
                             <div class="flex items-center justify-between">
