@@ -1,16 +1,28 @@
 class CarsController < ApplicationController
 
+  
     def create 
-        
         @car = Car.create(car_params)
         @car.user = current_user
         @car.save
         redirect_to user_path(current_user)
     end
 
+    def edit
+        @car = Car.find(params[:id])
+        render layout: "application"
+    end
+
+    def update
+        @car = Car.find(params[:id])
+        @car.update(car_params)
+        redirect_to user_path(current_user)
+    end
     
-
-
+    def destroy
+        Car.find(params[:id]).destroy
+        redirect_to user_path(current_user)
+    end
 
 
     private 
