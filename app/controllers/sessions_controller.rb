@@ -5,13 +5,13 @@ class SessionsController < ApplicationController
         render 'welcome/index'
     end
     
+    # Facebook Login
     def create
       @user = User.find_by(uid: auth['uid'])
       if @user
         session[:user_id] = @user.id
         redirect_to user_path(@user)
       else
-        binding.pry
         @user = User.new
         @user.uid = auth['uid']
         @user.name = auth['info']['name']
@@ -21,6 +21,11 @@ class SessionsController < ApplicationController
         session[:user_id] = @user.id
         redirect_to user_path(@user)
       end
+    end
+
+    def destroy
+      session.delete :user_id
+      redirect_to root_path
     end
      
       private

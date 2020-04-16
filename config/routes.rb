@@ -4,10 +4,13 @@ Rails.application.routes.draw do
   end
   
   resources :users
-
-  resources :washes, only: [:index]
   get '/signin', to: 'users#signin'
   post '/signin', to: 'users#login'
+
+  resources :washes, only: [:index]
+
+  resources :sessions, only: [:index, :create, :destroy]
+  post '/logout', to: 'sessions#destroy'
 
   #Set Root
   root 'sessions#index'
