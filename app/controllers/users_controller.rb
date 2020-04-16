@@ -1,11 +1,19 @@
 class UsersController < ApplicationController
+
+
     def new 
         @user = User.new
     end
 
     def create 
-        @user = User.create(user_params)
-        redirect_to "/signin"
+        @user = User.new(user_params)
+        if @user.valid? 
+            @user.save 
+            redirect_t0 "/signin"
+        else
+            @errors = @user.get_errors
+            render :new
+        end
     end
     
     def signin
