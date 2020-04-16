@@ -20,7 +20,9 @@ class CarsController < ApplicationController
     end
     
     def destroy
-        Car.find(params[:id]).destroy
+        @car = Car.find(params[:id])
+        @car.washes.clear
+        @car.destroy
         redirect_to user_path(current_user)
     end
 

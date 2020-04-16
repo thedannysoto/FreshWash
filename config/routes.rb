@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   end
   
   resources :users
+
+  resources :washes, only: [:index]
   get '/signin', to: 'users#signin'
   post '/signin', to: 'users#login'
 

@@ -23,9 +23,11 @@
                 <%= f.select :car_type, options_for_select([['Sedan'], ['SUV'], ['Coupé'], ['Pickup'], ['Van']]), class: "appearance-none rounded-md relative block w-full py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5"  %>
             </div>
             <div class="justify-between flex">
-                <%= button_to "Delete Car", car_path(@car), method: :delete, class: "group relative w-full flex justify-center mt-6 py-2 px-4 mr-1 border border-transparent text-sm font-medium rounded-md text-white bg-red-500 hover:bg-red-700 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out"  %>
+                <button class ="w-full flex justify-center mt-6 py-2 px-4 mr-1 border border-transparent text-sm font-medium rounded-md text-white bg-red-500 hover:bg-red-700 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out"> 
+                    <%= link_to("Delete Car", car_path(@car), method: :delete,) %>
+                </button>   
                 <%= f.submit "Update Car", class: "group relative w-full flex justify-center mt-6 py-2 px-4 ml-1 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-500 hover:bg-indigo-700 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out" %>
-        </div>
+            </div>
     <% end %>
 	</div>
     </div>

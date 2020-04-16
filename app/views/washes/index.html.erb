@@ -1,0 +1,65 @@
+<header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+        <h1 class="text-3xl font-bold leading-tight text-gray-900">
+            Welcome, <%= @user.name %>!
+        </h1>
+    </div>
+</header>
+
+<!-- Washes Display -->
+
+<div class="max-w-7xl mx-auto h-screen py-6 sm:px-6 lg:px-8 bg-gray-200">
+
+    <% if @washes.empty? %>
+        <div class="max-w-7xl mx-auto h-screen py-6 sm:px-6 lg:px-8 bg-gray-200">
+            <div class="flex-none text-3xl text-center text-gray-800 font-bold mt-10">
+                <h2 class="mb-8">Get your first wash today!</h2>
+            </div>
+        </div>
+    <% else %>
+
+        <div class="max-w-7xl mx-auto h-screen py-6 sm:px-6 lg:px-8 bg-gray-200">
+            <div class="flex-none text-3xl text-center text-gray-800 font-bold">
+                <h2 class="mb-8">Order History</h2>
+            </div>
+
+    <!-- Washes Table -->        
+            <div class = "bg-white py-10">
+                <table class="table-auto mx-auto border bg-white">
+                <div class = "text-right pr-64">
+                <p class="mr-20 mb-4">Sort by ( 
+                    <%= link_to "Price", washes_path(:scope => "ordered_by_price"), class: "text-blue-600 font-bold" %> or
+                    <%= link_to "Car", washes_path(:scope => "ordered_by_car"), class: "text-blue-600 font-bold" %>)
+                </p>
+                </div>
+                    <thead>
+                        <tr>
+                            <th class="px-4 py-2">Wash Package</th>
+                            <th class="px-4 py-2">Date</th>
+                            <th class="px-4 py-2">Time</th>
+                            <th class="px-4 py-2">Car</th>
+                            <th class="px-4 py-2">License Plate #</th>
+                            <th class="px-4 py-2">Price</th>
+                        </tr>
+                    </thead>
+                   
+                    <tbody>
+                        <% @washes.each do |wash| %>
+                        <tr>
+                            <td class="border px-4 py-2"><%= wash.package.name %></td>
+                            <td class="border px-4 py-2"><%= wash.updated_at.strftime("%m-%d-%Y") %></td>
+                            <td class="border px-4 py-2"><%= wash.updated_at.strftime("%l:%M %p") %></td>
+                            <td class="border px-4 py-2"><%= wash.car.make%> <%= wash.car.model %></td>
+                            <td class="border px-4 py-2"><%= wash.car.license_plate %></td>
+                            <td class="border px-4 py-2">$<%= wash.package.price %>.00</td>
+                        </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    <% end %>
+
+
+</div>
