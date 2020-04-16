@@ -19,6 +19,7 @@ class PackagesController < ApplicationController
         wash.package = package
         wash.car = car 
         wash.save
+        flash[:notice] = "#{car.make} #{car.model} has been washed with the #{package.name} package"
         redirect_to user_path(current_user)
     end
 
