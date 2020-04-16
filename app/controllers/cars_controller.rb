@@ -1,5 +1,5 @@
 class CarsController < ApplicationController
-
+    before_action :require_login
   
     def create 
         @car = Car.new(car_params)
@@ -44,5 +44,12 @@ class CarsController < ApplicationController
 
     def car_params
         params.require(:car).permit(:make, :model, :car_type, :license_plate, :year)
+    end
+
+    def require_login
+        if !session.include? :user_id
+            flash[:error] = "You must be logged in to view that page"
+            redirect_to signin_path
+        end
     end
 end
