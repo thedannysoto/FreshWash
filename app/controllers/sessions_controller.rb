@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController 
-    layout 'home'
     
     def index
         render 'welcome/index'

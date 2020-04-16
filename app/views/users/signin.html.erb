@@ -12,7 +12,7 @@
                 </a>
             </p>
             <br>
-            <%= form_for @user, url: signin_path do |f| %>
+            <%= form_for @user, url: "/signin" do |f| %>
                     <div class="rounded-md shadow-sm">
                         <div>
                             <%= f.text_field :email, placeholder: "Email", class: "appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5" %>
