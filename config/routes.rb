@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :cars do 
-    resources :packages
+    resources :packages, only: [:new, :create]
   end
   
   resources :users
