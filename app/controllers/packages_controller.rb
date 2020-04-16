@@ -1,4 +1,5 @@
 class PackagesController < ApplicationController
+    before_action :require_login
 
 
     def new
@@ -28,5 +29,12 @@ class PackagesController < ApplicationController
 
     def package_params
         params.require(:package).permit(:package_id)
+    end
+
+    def require_login
+        if !session.include? :user_id
+            flash[:error] = "You must be logged in to view that page"
+            redirect_to signin_path
+        end
     end
 end
