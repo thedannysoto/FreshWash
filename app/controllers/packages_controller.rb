@@ -1,5 +1,6 @@
 class PackagesController < ApplicationController
     before_action :require_login
+    layout "main"
 
 
     def new
@@ -7,7 +8,6 @@ class PackagesController < ApplicationController
         @package = Package.new
         @car = Car.find(params[:car_id])
         @user = current_user
-        render layout: "main"
     end
 
     def create 

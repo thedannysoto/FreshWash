@@ -1,6 +1,7 @@
 class WashesController < ApplicationController 
     before_action :require_login
-
+    layout "main"
+    
     def index
         @user = current_user
         @washes = @user.washes
@@ -11,7 +12,6 @@ class WashesController < ApplicationController
                 @washes = @user.washes.ordered_by_car
             end 
         end
-        render layout: "main"
     end
 
     private 

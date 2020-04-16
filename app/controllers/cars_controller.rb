@@ -1,5 +1,9 @@
 class CarsController < ApplicationController
     before_action :require_login
+    before_action :find_car
+    skip_before_action :find_car, only: [:create]
+    
+    layout "application"
   
     def create 
         @car = Car.new(car_params)
@@ -16,19 +20,15 @@ class CarsController < ApplicationController
     end
 
     def edit
-        @car = Car.find(params[:id])
-        render layout: "application"
     end
 
     def update
-        @car = Car.find(params[:id])
         @car.update(car_params)
         flash[:notice] = "Car Updated Successfully"
         redirect_to user_path(current_user)
     end
     
     def destroy
-        @car = Car.find(params[:id])
         @car.washes.clear
         @car.destroy
         flash[:notice] = "Car Removed"
@@ -51,5 +51,9 @@ class CarsController < ApplicationController
             flash[:error] = "You must be logged in to view that page"
             redirect_to signin_path
         end
+    end
+
+    def find_car 
+        @car = Car.find(params[:id])
     end
 end
